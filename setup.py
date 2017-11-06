@@ -31,7 +31,7 @@ setup(
     zip_safe=False,
     entry_points={
         'console_scripts': [
-         'labelord = labelord:main',
+         'labelord = labelord.labelord_main:main',
         ],
     },
 )
