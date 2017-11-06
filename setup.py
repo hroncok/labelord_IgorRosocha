@@ -14,6 +14,7 @@ setup(
     license='MIT',
     url='https://github.com/IgorRosocha/labelord_IgorRosocha',
     packages=find_packages(),
+    package_data = {'labelord': ['templates/*.html']},
     classifiers=[
         'Intended Audience :: Developers',
         'License :: Public Domain',
