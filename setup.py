@@ -10,7 +10,7 @@ setup(
     long_description=long_description,
     author='Igor Rosocha',
     author_email='rosocigo@fit.cvut.cz',
-    keywords='github,labels,management',
+    keywords='github,labels,management,flask,web,cli',
     license='MIT',
     url='https://github.com/IgorRosocha/labelord_IgorRosocha',
     packages=find_packages(),
