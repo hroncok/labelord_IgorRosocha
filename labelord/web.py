@@ -6,7 +6,7 @@ import flask
 import hmac
 import os
 from flask import request
-from cli import cli
+from .cli import cli
 
 
 def config_repos_to_list(config):

@@ -1,5 +1,5 @@
-from web import *
-from cli import *
+from .web import *
+from .cli import *
 
 
 def main():
