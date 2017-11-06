@@ -15,13 +15,15 @@ setup(
     url='https://github.com/IgorRosocha/labelord_IgorRosocha',
     packages=find_packages(),
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Framework :: Flask',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: POSIX :: Linux',
+        'License :: Public Domain',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
-        'Topic :: Software Development :: Libraries'
+        'Topic :: Software Development :: Libraries',
+        'Framework :: Flask',
+        'Environment :: Console',
+        'Environment :: Web Environment'
     ],
     install_requires=['Flask', 'click>=6', 'requests'],
     setup_requires=['pytest-runner', 'pytest'],
