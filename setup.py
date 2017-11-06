@@ -15,6 +15,7 @@ setup(
     url='https://github.com/IgorRosocha/labelord_IgorRosocha',
     packages=find_packages(),
     package_data = {'labelord': ['templates/*.html']},
+    python_requires='~=3.6',
     classifiers=[
         'Intended Audience :: Developers',
         'License :: Public Domain',
@@ -27,8 +28,6 @@ setup(
         'Environment :: Web Environment'
     ],
     install_requires=['Flask', 'click>=6', 'requests'],
-    setup_requires=['pytest-runner', 'pytest'],
-    tests_require=['pytest', 'betamax', 'configparser'],
     zip_safe=False,
     entry_points={
         'console_scripts': [
