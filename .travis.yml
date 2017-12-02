@@ -4,5 +4,5 @@ python:
 install:
 - python setup.py install
 - pip install -r docs/requirements.txt
-script:
+script: 
 - cd docs && make doctest
