@@ -1,4 +1,5 @@
-## Labelord
+labelord
+=========
 
 **Labelord** is a management application for GitHub repositories, created as a part of **MI-PYT** course at **CTU in Prague**.
 
@@ -18,7 +19,7 @@ There are two ways how to install **labelord**:
 
 1. Installation directly from TestPyPI, using the following command:
 
-.. code:: python
+.. code:: bash
 
     python -m pip install --extra-index-url \
     https://test.pypi.org/pypi IgorRosocha
@@ -43,5 +44,3 @@ License
 -------------
 
 This project is licensed under the **MIT License**.
-
-You can also download this project as a package from TestPyPI [here](https://testpypi.python.org/pypi/labelord-IgorRosocha).
