@@ -10,7 +10,10 @@ from .cli import cli
 
 
 def config_repos_to_list(config):
-    """Parse the repositories contained in config file and create a HTML list of them. (for the web usage)"""
+    """Parse the repositories contained in configuration file and create a HTML list of them. (for the web usage)
+
+    :param config: Configuration file
+    """
     config_file = configparser.ConfigParser()
     config_file.optionxform = str
 
@@ -45,14 +48,20 @@ def config_repos_to_list(config):
 
 
 def get_server_config(path):
-    """Get the path to the config on server."""
+    """Get the path to the configuration file on server.
+
+    :param path: Path to the configuration file
+    """
     config_path = os.path.isfile(path)
     if config_path:
         return path
 
 
 def validate_token(ctx):
-    """Validate the token specified in config and create session."""
+    """Validate the token specified in config and create session.
+
+    :param ctx: Context, which is automatically passed by Click library
+    """
     token = ctx.obj['token']
     config = ctx.obj['config']
     if not token:
@@ -77,7 +86,10 @@ def validate_token(ctx):
 
 
 def web_session(config_file):
-    """Create a web session."""
+    """Create a web session.
+
+    :param config_file: Configuration file
+    """
     token = config_file['github']['token']
     session = requests.Session()
     session.headers = {'User-Agent': 'Python'}
@@ -91,7 +103,11 @@ def web_session(config_file):
 
 
 def web_session_inject(config_file, session):
-    """Create a web session."""
+    """Create a web session.
+
+    :param config_file: Configuration file
+    :param session: GitHub session
+    """
     token = config_file['github']['token']
     session.headers = {'User-Agent': 'Python'}
 
@@ -107,6 +123,11 @@ def web_create_label(session, reposlug, name, color):
     """
     Create the specified label and add to the specified GitHub repository.
     (simplified version for web)
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param name: Name of the new label
+    :param color: Color of the new label
     """
     header = {'name': name, 'color': color}
     url = 'https://api.github.com/repos/' + reposlug + '/labels'
@@ -117,6 +138,10 @@ def web_remove_label(session, reposlug, name):
     """
     Remove the specified label from the specified GitHub repository.
     (simplified version for web)
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param name: Name of the label to be removed
     """
     url = 'https://api.github.com/repos/' + reposlug + '/labels/' + name
     session.delete(url)
@@ -126,6 +151,12 @@ def web_edit_label(session, reposlug, old_name, new_name, color):
     """
     Edit the specified label (name, color or both) in the specified GitHub repository.
     (simplified version for web)
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param old_name: Old name of the edited label
+    :param new_name: New name of the edited label
+    :param color: Color of the edited label
     """
     header = {'name': new_name, 'color': color}
     url = 'https://api.github.com/repos/' + reposlug + '/labels/' + old_name
@@ -133,7 +164,10 @@ def web_edit_label(session, reposlug, old_name, new_name, color):
 
 
 def get_repos_from_config(config_file):
-    """Get the list of repositories which are allowed to work with from the config file."""
+    """Get the list of repositories which are allowed to work with from the config file.
+
+    :param config_file: Configuration file
+    """
     repos = []
     config_repos = config_file['repos']
     for repository in config_repos:
@@ -181,7 +215,11 @@ app = LabelordWeb(__name__)
 
 
 def secret_verification(signature, message):
-    """Verification of webhook secret."""
+    """Verification of webhook secret.
+
+    :param signature: Signature from HTTP header
+    :param message: Content of HTTP POST request
+    """
     if app.ctx:
         config = app.ctx.obj['config_file']
     else:
@@ -206,6 +244,9 @@ def secret_verification(signature, message):
 
 @app.route('/', methods=['GET'])
 def get():
+    """
+    This function fills index.html on a default route / with list of repositories and simple description of web application.
+    """
     if app.ctx:
         config = app.ctx.obj['config_file']
         return config_repos_to_list(config)
@@ -223,6 +264,9 @@ def get():
 
 @app.route('/', methods=['POST'])
 def post():
+    """
+    This function is used for processing incoming HTTP POST request from GitHub.
+    """
     data = request.get_json()
     if 'X-Hub-Signature' not in request.headers:
         return 'UNAUTHORIZED', 401

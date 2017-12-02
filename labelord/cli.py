@@ -5,7 +5,12 @@ import json
 
 
 def create_request(url, session):
-    """Create a GitHub request and return the json."""
+    """
+    Create a GitHub request and return the json.
+
+    :param url: URL of GitHub repository
+    :param session: GitHub session
+    """
     r = session.get(url)
     if r.status_code == 404:
         click.echo('GitHub: ERROR 404 - Not Found')
@@ -22,7 +27,11 @@ def create_request(url, session):
 
 
 def get_json(request, session):
-    """Get the json from request and return all of the URLs."""
+    """Support method to get the json from request and return all of the URLs.
+
+    :param request: GitHub request
+    :param session: GitHub session
+    """
     result = request.json()
     if request.links:
         while 'next' in request.links:
@@ -33,7 +42,11 @@ def get_json(request, session):
 
 
 def validate_token(ctx):
-    """Validate the token specified in config and create session."""
+    """
+    Validate the token specified in config and create session.
+
+    :param ctx: Context, which is automatically passed by Click library
+    """
     token = ctx.obj['token']
     config = ctx.obj['config']
     if not token:
@@ -58,7 +71,12 @@ def validate_token(ctx):
 
 
 def get_labels(session, reposlug, configuration):
-    """Get all of the labels from the specified repository."""
+    """Get all of the labels from the specified repository.
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param configuration: Configuration specified
+    """
     quiet = configuration['quiet']
     verbose = configuration['verbose']
     url = 'https://api.github.com/repos/{}/labels?per_page=100&page=1'.format(reposlug)
@@ -81,7 +99,10 @@ def get_labels(session, reposlug, configuration):
 
 
 def parse_labels(labels):
-    """Parse the labels."""
+    """Parse the labels.
+
+    :param labels: List of labels to parse
+    """
     parsed_labels = {}
     for label in labels:
         parsed_labels[label['name']] = label['color']
@@ -89,13 +110,26 @@ def parse_labels(labels):
 
 
 def diff(first, second):
-    """Compute the difference between two lists."""
+    """
+    Support method to compute the difference between two lists.
+
+    :param first: first list
+    :param second: second list
+    """
     second = set(second)
     return [item for item in first if item not in second]
 
 
 def remove_label(session, reposlug, name, color, configuration):
-    """Remove the specified label from the specified GitHub repository."""
+    """
+    Remove the specified label from the specified GitHub repository.
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param name: Name of the label to be removed
+    :param color: Color of the label to be removed
+    :param configuration: Configuration specified
+    """
     dry_run = configuration['dry_run']
     quiet = configuration['quiet']
     verbose = configuration['verbose']
@@ -128,7 +162,16 @@ def remove_label(session, reposlug, name, color, configuration):
 
 
 def create_label(session, reposlug, name, color, configuration):
-    """Create the specified label and add to the specified GitHub repository."""
+    """
+    Create the specified label and add to the specified GitHub repository.
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param name: Name of the new label
+    :param color: Color of the new label
+    :param configuration: Configuration specified
+    """
+
     dry_run = configuration['dry_run']
     quiet = configuration['quiet']
     verbose = configuration['verbose']
@@ -163,7 +206,16 @@ def create_label(session, reposlug, name, color, configuration):
 
 
 def edit_label(session, reposlug, old_name, new_name, color, configuration):
-    """Edit the specified label (name, color or both) in the specified GitHub repository."""
+    """
+    Edit the specified label (name, color or both) in the specified GitHub repository.
+
+    :param session: GitHub session
+    :param reposlug: Name of the repository
+    :param old_name: Old name of the edited label
+    :param new_name: New name of the edited label
+    :param color: Color of the edited label
+    :param configuration: Configuration specified
+    """
     dry_run = configuration['dry_run']
     quiet = configuration['quiet']
     verbose = configuration['verbose']
@@ -198,7 +250,12 @@ def edit_label(session, reposlug, old_name, new_name, color, configuration):
 
 
 def print_version(ctx, param, value):
-    """Print version of the app."""
+    """Print version of the app (default click implementation).
+
+    :param ctx: Context, which is automatically passed by Click library
+    :param param: Version parameter
+    :param value: Version value
+    """
     if not value or ctx.resilient_parsing:
         return
     click.echo('labelord, version 0.3')

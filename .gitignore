@@ -103,16 +103,10 @@ ENV/
 # github token
 ./config.cfg
 
-# tests
+
 ./templates/
 ./__pycache__/*
-.DS_Store
-.cache/
-.eggs/
-__pycache__/
-dist/
-labelord/.DS_Store
-labelord_IgorRosocha.egg-info/
-tests_cli/.DS_Store
-tests_module/.DS_Store
-README
+
+# docs
+./docs/_templates
+./docs/_build
