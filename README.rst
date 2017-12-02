@@ -38,7 +38,16 @@ Please note that **labelord** requires at least Python 3 to be installed to run 
 Documentation
 --------------
 
+For the full documentation, please visit `Readthedocs.io <http://labelord-igorrosocha.readthedocs.io/en/latest/>`__.
 
+You can also build the documentation locally. Just follow these steps:
+
+1. Download **labelord**
+2. Navigate to **docs** directory
+3. Run ``python python -m pip install -r requirements.txt``
+4. Run ``make html`` and ``make doctest``
+5. You can find all of the .html files in _build/html directory
+	
 
 License
 -------------
