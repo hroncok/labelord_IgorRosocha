@@ -1,6 +1,8 @@
 labelord
 =========
 
+.. image:: https://travis-ci.org/IgorRosocha/labelord_IgorRosocha.svg?branch=master
+
 **Labelord** is a management application for GitHub repositories, created as a part of **MI-PYT** course at **CTU in Prague**.
 
 -------
