@@ -27,7 +27,7 @@ setup(
         'Environment :: Console',
         'Environment :: Web Environment'
     ],
-    install_requires=['Flask', 'click>=6', 'requests', 'sphinx-click', 'sphinx_rtd_theme'],
+    install_requires=['Flask', 'click>=6', 'requests', 'sphinx_click', 'sphinx_rtd_theme'],
     zip_safe=False,
     entry_points={
         'console_scripts': [
