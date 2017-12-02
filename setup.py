@@ -27,7 +27,7 @@ setup(
         'Environment :: Console',
         'Environment :: Web Environment'
     ],
-    install_requires=['Flask', 'click>=6', 'requests', 'sphinx_click'],
+    install_requires=['Flask', 'click>=6', 'requests', 'sphinx-click'],
     zip_safe=False,
     entry_points={
         'console_scripts': [
