@@ -110,3 +110,6 @@ ENV/
 # docs
 ./docs/_templates
 ./docs/_build
+.DS_Store
+./docs/.DS_Store
+./labelord/.DS_Store
