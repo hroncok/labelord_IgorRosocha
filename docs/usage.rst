@@ -14,6 +14,7 @@ If you wish to list all of the available options and commands in your command li
 .. code:: python
 
 	labelord
+
 or
 
 .. code:: python

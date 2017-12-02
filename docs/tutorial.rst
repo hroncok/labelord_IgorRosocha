@@ -53,6 +53,7 @@ Configuration files has to contain these fields:
 	- ``[github]``
 		- ``token``: your GitHub personal access token.
 		- ``webhook_secret``: your webhook secret key to validate all the incoming GitHub webhooks (only required if using the web application).
+		
 		.. warning:: **Don't forget to keep your token and webhook secret safe and never publish them!**
 
 	- ``[labels]``
