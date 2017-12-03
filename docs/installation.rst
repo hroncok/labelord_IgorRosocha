@@ -8,7 +8,7 @@ There are two ways how to install **labelord**:
 .. code:: python
 
     python -m pip install --extra-index-url \
-    https://test.pypi.org/pypi IgorRosocha
+    https://test.pypi.org/pypi labelord-IgorRosocha
 
 2. If any problem occurred, please follow these steps:
 	- Download **labelord** directly from TestPyPI `here <https://testpypi.python.org/pypi/labelord-IgorRosocha>`_.
